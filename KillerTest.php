@@ -1,0 +1,27 @@
+<?php
+use PHPUnit\Framework\TestCase;
+use App\Killer;
+
+final class KillerTest extends TestCase
+{
+    public function testVictimKilled()
+    {
+        $victim = 'Marc';
+        $killer = new Killer;
+        $dead = $killer -> getName ($victim);
+        $this->assertSame ($victim, $dead);
+        echo $dead;
+    }
+
+    public function testDeadRemovedFromList()
+    {
+        $coders = ['Magali', 'Claudia', 'Diego', 'Javi', 'Elena'];
+        $killer = new Killer;
+        $victim = 'Diego';
+        $key = array_search('Elena', $coders);
+        $dead = $killer->unset($coders[$key]);
+        $this->assertFalse (in_array($dead, $coders));
+        print_r($coders);
+
+    }
+}
