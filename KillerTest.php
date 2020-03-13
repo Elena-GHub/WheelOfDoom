@@ -12,7 +12,14 @@ final class KillerTest extends TestCase
         $this->assertSame ($victim, $dead);
         echo $dead;
     }
-
+    public function testDeadAddedToCemetery()
+    {
+        $dead = 'Pepe';
+        $codersCemetery = [];
+        array_push($codersCemetery, $dead);
+        $this->assertTrue (in_array($dead, $codersCemetery));
+        print_r($codersCemetery);
+    }
     public function testDeadRemovedFromList()
     {
         $coders = ['Magali', 'Claudia', 'Diego', 'Javi', 'Elena'];
