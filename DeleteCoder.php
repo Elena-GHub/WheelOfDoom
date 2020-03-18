@@ -4,18 +4,15 @@ namespace App;
 
 final class DeleteCoder{
 
-    function deleteName() {
+    function deleteName($coder,$coders) {
 
-        $coders = array('Javi','Pepe','Diego');
-        $out = 'Pepe';
-
-        unset($coders[array_search($out,$coders)]);
+        if (!(in_array($coder,$coders))){
+            echo "User not found";
+            return "Coder not found";
+        }
+        unset($coders[array_search($coder,$coders)]);
         print_r($coders);
 
-
-
     }
-
-
 
 }
