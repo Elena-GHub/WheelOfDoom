@@ -1,34 +1,41 @@
 <?php
+
+
 use PHPUnit\Framework\TestCase;
 use App\Killer;
 
-final class KillerTest extends TestCase
-{
-    public function testVictimKilled()
-    {
-        $victim = 'Marc';
+final class KillerTest extends TestCase{
+
+    function testDeadIsInCoders(){
+
+
+        $coders = ['Magali','Javi','Diego','Claudia','Elena'];
+        $dead = 'Javi';
         $killer = new Killer;
-        $dead = $killer -> getName ($victim);
-        $this->assertSame ($victim, $dead);
-        echo $dead;
-    }
-    public function testDeadAddedToCemetery()
-    {
-        $dead = 'Pepe';
-        $codersCemetery = [];
-        array_push($codersCemetery, $dead);
-        $this->assertTrue (in_array($dead, $codersCemetery));
-        print_r($codersCemetery);
-    }
-    public function testDeadRemovedFromList()
-    {
-        $coders = ['Magali', 'Claudia', 'Diego', 'Javi', 'Elena'];
-        $killer = new Killer;
-        $victim = 'Diego';
-        $key = array_search('Elena', $coders);
-        $dead = $killer->unset($coders[$key]);
-        $this->assertFalse (in_array($dead, $coders));
-        print_r($coders);
+        $dead = $killer->unset($dead,$coders);
+        $this->assertFalse(in_array($dead,$coders));
 
     }
+
+    function testDeadIsInCementery(){
+
+        $coders = ['Magali','Javi','Diego','Claudia','Elena'];
+        $dead = 'Javi';
+        $crypt = array ();
+        $killer = new Killer;
+        $name = $killer->unset($dead,$coders);
+        $this->assertFalse(in_array($name,$crypt));
+
+    }
+
+    public function testMessageIfDeadIsNotInList()
+    {
+        $coders = array('Javi','Laura','Diego');
+        $dead = 'Pepe';
+        $killer = new Killer;
+        $dead = $killer->unset($dead,$coders);
+        $this->assertSame("Coder not found",$dead);
+    }
+
 }
+
