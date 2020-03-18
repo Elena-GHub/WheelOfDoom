@@ -60,6 +60,19 @@ h1 {
       grid-row: 1/21;
       grid-column: 1/7;
     }
+    #AliveCoders{
+      z-index: -1;
+      grid-row: 7/19;
+      grid-column: 2/6;
+      text-align: center;
+      font-family: 'Ink free';
+      color: white;
+      width: 18vw;
+      height: 36vh;
+      overflow: auto;
+      scroll-behavior: smooth;
+      font-size: 1vw;
+    }
     #centerWheel{
       z-index: -1;
       margin: 0;
